@@ -5,11 +5,12 @@
       .module('statusApp')
       .controller('AuthController', AuthController);
 
-    function AuthController(Auth, $state) {
+    function AuthController(Auth, User, $state) {
         var vm = this;
 
         vm.createUser = createUser;
         vm.login = login;
+        vm.loggedInUser;
 
         function createUser() {
             //If there is already a user logged in,
@@ -26,8 +27,19 @@
             });
         }
 
-        function saveUser() {
-            //TODO: save the user data at the /users endpoint
+        function saveUser(userData) {
+            var user = User.newUserRef(userData);
+            user.username = vm.username;
+            user.email = vm.email;
+
+            user.$save().then(function(success) {
+                vm.username = null;
+                vm.email = null;
+                vm.password = null;
+                $state.go('status');
+            }, function(error) {
+                console.log("there was an error! " + error);
+            });
         }
 
         function login() {
