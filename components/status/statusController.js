@@ -10,14 +10,15 @@
         var vm = this;
 
         vm.addStatus = addStatus;
+        vm.deleteStatus = deleteStatus;
         vm.md5 = md5;
         vm.statusData = Status;
 
         function addStatus() {
             if (vm.statusText) {
-                vm.statusData.$add({
 
-                    // Add the status data to Firebase
+                // Add the status data to Firebase
+                vm.statusData.$add({
                     date: Firebase.ServerValue.TIMESTAMP,
                     text: vm.statusText,
                     user: {
@@ -28,6 +29,14 @@
                 vm.statusText = "";
             }
         }
+
+        function deleteStatus(status) {
+
+            // Remove the status that was passed in
+            // from the views
+            vm.statusData.$remove(status);
+        }
+
     }
 
 })();

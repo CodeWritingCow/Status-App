@@ -14,6 +14,11 @@
                 <p>{{ statusItem.text }}</p>
             </div>
             <md-divider md-inset></md-divider>
+            <md-icon class="remove-status"
+                     ng-if="statusItem.user.username === loggedInUserData.username"
+                     ng-click="status.deleteStatus(statusItem)">
+                X
+            </md-icon>
         </md-list-item>
     </md-list>
 </md-content>
