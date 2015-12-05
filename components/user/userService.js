@@ -13,7 +13,7 @@
         }
 
         function getUserData(user) {
-            var ref = new Firebase("https://statusapp.firebaseio/users/" + user);
+            var ref = new Firebase("https://statusapp.firebaseio.com/users/" + user);
             return $firebaseObject(ref);
         }
 
