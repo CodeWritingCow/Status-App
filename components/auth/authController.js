@@ -21,6 +21,7 @@
                 email: vm.email,
                 password: vm.password
             }).then(function (userData) {
+                saveUser(userData);
                 login();
             }).catch(function(error) {
                 vm.error = error;
