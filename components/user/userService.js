@@ -8,17 +8,17 @@
     function UserService($firebaseObject) {
 
         function newUserRef(user) {
-            var ref = new Firebase("https://statusapp.firebaseio.com/users/" + user.uid);
+            var ref = new Firebase("https://status-update-app.firebaseio.com/users/" + user.uid);
             return $firebaseObject(ref);
         }
 
         function getUserData(user) {
-            var ref = new Firebase("https://statusapp.firebaseio.com/users/" + user);
+            var ref = new Firebase("https://status-update-app.firebaseio.com/users/" + user);
             return $firebaseObject(ref);
         }
 
         function getLoggedInUser() {
-            var user = localStorage.getItem('firebase:session::statusapp');
+            var user = localStorage.getItem('firebase:session::status-update-app');
             if (user) {
                 return JSON.parse(user);
             }
